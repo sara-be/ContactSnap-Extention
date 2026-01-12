@@ -3,81 +3,57 @@
 <head>
   <meta charset="UTF-8" />
   <title>ContactSnap</title>
-
-  <!-- Tailwind CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            gradientStart: '#4f46e5', // indigo
-            gradientEnd: '#9333ea'    // purple
-          }
-        }
-      }
-    }
-  </script>
+  <link rel="stylesheet" href="popup.css">
 </head>
 
-<body class="w-[360px] rounded-2xl overflow-hidden
-             bg-gradient-to-br from-gradientStart to-gradientEnd
-             text-white">
+<body class="popup">
 
   <!-- Header -->
-  <div class="bg-white text-gray-800 flex items-center justify-between px-4 py-3">
-    <div class="flex items-center gap-2">
-      <img src="../images/icon16.png" alt="logo" class="w-5 h-5">
-      <span class="font-semibold text-sm">ContactSnap</span>
+  <div class="header">
+    <div class="header-left">
+      <img src="../images/icon16.png" alt="logo">
+      <span>ContactSnap</span>
     </div>
 
-    <button
-      id="extractBtn"
-      class="text-xs font-medium px-3 py-1.5 rounded-md
-             bg-gradient-to-r from-indigo-500 to-purple-500
-             text-white hover:opacity-90 transition">
+    <button id="extractBtn" class="extract-btn">
       Extract Contacts
     </button>
   </div>
 
   <!-- Content (collapsed by default) -->
-  <div id="content"
-       class="hidden px-4 py-4 space-y-4 text-sm">
+  <div id="content" class="content hidden">
 
-    <!-- Phone -->
-    <div>
-      <h3 class="font-semibold mb-1">📞 Phone</h3>
-      <ul id="phones" class="space-y-1 text-white/90"></ul>
+    <div class="section">
+      <h3>📞 Phone</h3>
+      <ul id="phones"></ul>
     </div>
 
-    <!-- Email -->
-    <div>
-      <h3 class="font-semibold mb-1">📧 Email</h3>
-      <ul id="emails" class="space-y-1 text-white/90"></ul>
+    <div class="section">
+      <h3>📧 Email</h3>
+      <ul id="emails"></ul>
     </div>
 
-    <!-- Social Media -->
-    <div>
-      <h3 class="font-semibold mb-2">🌐 Social Media</h3>
+    <div class="section">
+      <h3>🌐 Social Media</h3>
 
-      <div class="space-y-2 pl-2">
+      <div class="social">
         <div id="instagramBlock" class="hidden">
-          <p class="font-medium">Instagram:</p>
-          <ul id="instagram" class="pl-2 text-white/90"></ul>
+          <p>Instagram:</p>
+          <ul id="instagram"></ul>
         </div>
 
         <div id="facebookBlock" class="hidden">
-          <p class="font-medium">Facebook:</p>
-          <ul id="facebook" class="pl-2 text-white/90"></ul>
+          <p>Facebook:</p>
+          <ul id="facebook"></ul>
         </div>
 
         <div id="twitterBlock" class="hidden">
-          <p class="font-medium">X:</p>
-          <ul id="twitter" class="pl-2 text-white/90"></ul>
+          <p>X:</p>
+          <ul id="twitter"></ul>
         </div>
       </div>
     </div>
+
   </div>
 
   <script src="popup.js"></script>

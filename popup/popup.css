@@ -1,0 +1,198 @@
+* {
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body.popup {
+  width: 360px;
+  margin: 0;
+  /* border-radius: 20px; */
+  overflow: hidden;
+  color: white;
+
+  background: linear-gradient(
+    135deg,
+    #4f46e5 0%,
+    #2563eb 40%,
+    #06b6d4 100%
+  );
+
+  box-shadow:
+    0 20px 30px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* =====================
+   HEADER
+===================== */
+.header {
+  background: white;
+  color: #111827;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 14px 16px;
+
+  /* border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px; */
+
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.header-left img {
+  width: 22px;
+  height: 22px;
+}
+
+/* =====================
+   BUTTON
+===================== */
+.extract-btn {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 7px 14px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  color: white;
+
+  background: linear-gradient(
+    90deg,
+    #4f46e5,
+    #06b6d4
+  );
+
+  box-shadow:
+    0 6px 12px rgba(79, 70, 229, 0.35);
+
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    opacity 0.15s ease;
+}
+
+.extract-btn:hover {
+  opacity: 0.95;
+  box-shadow: 0 8px 16px rgba(6, 182, 212, 0.45);
+}
+
+.extract-btn:active {
+  transform: scale(0.96);
+}
+
+/* =====================
+   CONTENT AREA
+===================== */
+.content {
+  padding: 18px;
+  font-size: 13px;
+
+  animation: expand 0.25s ease-out;
+}
+
+@keyframes expand {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+/* =====================
+   SECTIONS
+===================== */
+.section {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 12px 14px;
+  margin-bottom: 14px;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.section h3 {
+  margin: 0 0 8px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+/* =====================
+   LISTS
+===================== */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  padding: 6px 8px;
+  margin-bottom: 4px;
+
+  border-radius: 8px;
+  cursor: pointer;
+
+  background: rgba(255, 255, 255, 0.06);
+  transition:
+    background 0.15s ease,
+    transform 0.1s ease;
+}
+
+li:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateX(2px);
+}
+
+li:active {
+  transform: scale(0.98);
+}
+
+/* =====================
+   SOCIAL MEDIA BLOCKS
+===================== */
+.social {
+  padding-left: 6px;
+}
+
+.social p {
+  margin: 10px 0 6px;
+  font-weight: 600;
+  font-size: 13px;
+  opacity: 0.95;
+}
+
+/* =====================
+   SCROLL (if content grows)
+===================== */
+.section ul {
+  max-height: 90px;
+  overflow-y: auto;
+}
+
+.section ul::-webkit-scrollbar {
+  width: 6px;
+}
+
+.section ul::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  /* border-radius: 10px; */
+}

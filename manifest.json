@@ -1,5 +1,5 @@
 {
-    "manifest_version": 1,
+    "manifest_version": 3,
     "name": "ContactSnap",
     "version": "1.0",
     "description": "Extract contact information from web pages and save it to your address book",
@@ -11,12 +11,7 @@
         "clipboardRead"
     ],
     "host_permissions": [
-        "https://*",
-        "http://*",
-        "https://web.*",
-        "http://web.*",
-        "https://wwww.*",
-        "http://wwww.*"
+        "<all_urls>"
     ],
     "action": {
         "default_popup": "popup/popup.html",
@@ -29,12 +24,7 @@
     "content_scripts": [
         {
             "matches": [
-                "https://*",
-                "http://*",
-                "https://web.*",
-                "http://web.*",
-                "https://wwww.*",
-                "http://wwww.*"
+                "<all_urls>"
             ],
             "js": [
                 "content.js"
