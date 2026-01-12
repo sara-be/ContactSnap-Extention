@@ -1,16 +1,29 @@
 const extractBtn = document.getElementById("extractBtn");
-const content = document.getElementById("content");
+const contentDiv = document.getElementById("content");
 
-function createItem(text) {
-  const li = document.createElement("li");
-  li.textContent = text;
-  li.className = "cursor-pointer hover:underline";
-  li.onclick = () => navigator.clipboard.writeText(text);
-  return li;
+// Create list item or "No data found"
+function renderList(ulElement, items) {
+  ulElement.innerHTML = "";
+  if (!items.length) {
+    const li = document.createElement("li");
+    li.textContent = "No data found";
+    li.style.fontStyle = "italic";
+    ulElement.appendChild(li);
+  } else {
+    items.forEach(item => {
+      const li = document.createElement("li");
+      li.textContent = item;
+      li.onclick = () => navigator.clipboard.writeText(item);
+      li.style.cursor = "pointer";
+      li.onmouseover = () => li.style.textDecoration = "underline";
+      li.onmouseout = () => li.style.textDecoration = "none";
+      ulElement.appendChild(li);
+    });
+  }
 }
 
 extractBtn.addEventListener("click", () => {
-  content.classList.remove("hidden");
+  contentDiv.classList.remove("hidden");
 
   chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
     chrome.tabs.sendMessage(
@@ -20,38 +33,24 @@ extractBtn.addEventListener("click", () => {
         if (!data) return;
 
         // Phones
-        data.phones.forEach(p =>
-          document.getElementById("phones").appendChild(createItem(p))
-        );
+        renderList(document.getElementById("phones"), data.phones);
 
         // Emails
-        data.emails.forEach(e =>
-          document.getElementById("emails").appendChild(createItem(e))
-        );
+        renderList(document.getElementById("emails"), data.emails);
 
         // Social media
         const socials = data.socialLinks;
+        const socialNetworks = ["instagram", "facebook", "twitter", "linkedin", "discord", "youtube", "tiktok"];
 
-        if (socials.instagram.length) {
-          document.getElementById("instagramBlock").classList.remove("hidden");
-          socials.instagram.forEach(link =>
-            document.getElementById("instagram").appendChild(createItem(link))
-          );
-        }
-
-        if (socials.facebook.length) {
-          document.getElementById("facebookBlock").classList.remove("hidden");
-          socials.facebook.forEach(link =>
-            document.getElementById("facebook").appendChild(createItem(link))
-          );
-        }
-
-        if (socials.twitter.length) {
-          document.getElementById("twitterBlock").classList.remove("hidden");
-          socials.twitter.forEach(link =>
-            document.getElementById("twitter").appendChild(createItem(link))
-          );
-        }
+        socialNetworks.forEach(net => {
+          const block = document.getElementById(net + "Block");
+          if (socials[net] && socials[net].length) {
+            block.style.display = "block";
+            renderList(document.getElementById(net), socials[net]);
+          } else {
+            block.style.display = "none";
+          }
+        });
       }
     );
   });

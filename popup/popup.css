@@ -1,3 +1,6 @@
+/* =====================
+   RESET & BASE
+===================== */
 * {
   box-sizing: border-box;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
@@ -6,7 +9,6 @@
 body.popup {
   width: 360px;
   margin: 0;
-  /* border-radius: 20px; */
   overflow: hidden;
   color: white;
 
@@ -34,8 +36,6 @@ body.popup {
 
   padding: 14px 16px;
 
-  /* border-bottom-left-radius: 16px;
-  border-bottom-right-radius: 16px; */
 
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
 }
@@ -98,6 +98,9 @@ body.popup {
   font-size: 13px;
 
   animation: expand 0.25s ease-out;
+  border-bottom-left-radius: 20px; /* rounded bottom */
+  border-bottom-right-radius: 20px;
+  background: rgba(0,0,0,0.05); /* subtle contrast for content */
 }
 
 @keyframes expand {
@@ -120,10 +123,9 @@ body.popup {
 ===================== */
 .section {
   background: rgba(255, 255, 255, 0.08);
-  border-radius: 14px;
   padding: 12px 14px;
   margin-bottom: 14px;
-
+    border-radius: 14px;
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
@@ -157,10 +159,10 @@ li {
     transform 0.1s ease;
 }
 
-li:hover {
+/* li:hover {
   background: rgba(255, 255, 255, 0.15);
   transform: translateX(2px);
-}
+} */
 
 li:active {
   transform: scale(0.98);
@@ -194,5 +196,5 @@ li:active {
 
 .section ul::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.3);
-  /* border-radius: 10px; */
+  border-radius: 10px;
 }
