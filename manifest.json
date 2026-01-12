@@ -1,0 +1,52 @@
+{
+    "manifest_version": 1,
+    "name": "ContactSnap",
+    "version": "1.0",
+    "description": "Extract contact information from web pages and save it to your address book",
+    "permissions": [
+        "activeTab",
+        "storage",
+        "scripting",
+        "clipboardWrite",
+        "clipboardRead"
+    ],
+    "host_permissions": [
+        "https://*",
+        "http://*",
+        "https://web.*",
+        "http://web.*",
+        "https://wwww.*",
+        "http://wwww.*"
+    ],
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": {
+            "16": "images/icon16.png",
+            "48": "images/icon48.png",
+            "128": "images/icon128.png"
+        }
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://*",
+                "http://*",
+                "https://web.*",
+                "http://web.*",
+                "https://wwww.*",
+                "http://wwww.*"
+            ],
+            "js": [
+                "content.js"
+            ]
+        }
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "icons": {
+        "16": "images/icon16.png",
+        "48": "images/icon48.png",
+        "128": "images/icon128.png"
+    }
+}
